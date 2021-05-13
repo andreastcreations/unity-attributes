@@ -17,6 +17,7 @@ _With Attribute_ <br/>
 
 Example:
 ```C#
+// You can also add "spaceBefore" and "spaceAfter". Default values are 0.
 [HeaderBox("Header Box")]
 public int num;
 ```
