@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
-public class ReadOnlyAttribute : PropertyAttribute
+namespace ATM.Decoration
 {
-    public ReadOnlyAttribute()
+    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
+    public class ReadOnlyAttribute : PropertyAttribute
     {
+        public ReadOnlyAttribute()
+        {
 
+        }
     }
 }

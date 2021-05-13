@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
-public class MatrixPreviewAttribute : PropertyAttribute
+namespace ATM.Decoration
 {
-    public MatrixPreviewAttribute()
+    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
+    public class MatrixPreviewAttribute : PropertyAttribute
     {
+        public MatrixPreviewAttribute()
+        {
 
+        }
     }
 }
