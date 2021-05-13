@@ -6,19 +6,17 @@ namespace ATM.Decoration
     [CustomPropertyDrawer(typeof(HeaderBoxAttribute))]
     public class HeaderBoxAttributeDrawer : DecoratorDrawer
     {
+        private HeaderBoxAttribute HBAttribute => (HeaderBoxAttribute)attribute;
+
         public override float GetHeight()
         {
-            HeaderBoxAttribute headerBoxAttribute = (HeaderBoxAttribute)attribute;
-
-            return EditorGUIUtility.singleLineHeight * 1.5f + headerBoxAttribute.spaceBefore + headerBoxAttribute.spaceAfter;
+            return EditorGUIUtility.singleLineHeight * 1.5f + HBAttribute.spaceBefore + HBAttribute.spaceAfter;
         }
 
         public override void OnGUI(Rect position)
         {
-            HeaderBoxAttribute headerBoxAttribute = (HeaderBoxAttribute)attribute;
-
             Rect headerRect = new Rect(position.x,
-                                       position.y + headerBoxAttribute.spaceBefore + 1f,
+                                       position.y + HBAttribute.spaceBefore + 1f,
                                        position.width,
                                        EditorGUIUtility.singleLineHeight * 1.3f);
 
@@ -46,7 +44,7 @@ namespace ATM.Decoration
                 alignment = TextAnchor.MiddleCenter
             };
 
-            EditorGUI.LabelField(headerRect, headerBoxAttribute.header, headerStyle);
+            EditorGUI.LabelField(headerRect, HBAttribute.header, headerStyle);
         }
     }
 }
