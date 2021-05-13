@@ -8,12 +8,19 @@ namespace ATM.Decoration
     {
         public override float GetHeight()
         {
-            return EditorGUIUtility.singleLineHeight * 1.5f;
+            HeaderBoxAttribute headerBoxAttribute = (HeaderBoxAttribute)attribute;
+
+            return EditorGUIUtility.singleLineHeight * 1.5f + headerBoxAttribute.spaceBefore + headerBoxAttribute.spaceAfter;
         }
 
         public override void OnGUI(Rect position)
         {
-            Rect headerRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+            HeaderBoxAttribute headerBoxAttribute = (HeaderBoxAttribute)attribute;
+
+            Rect headerRect = new Rect(position.x,
+                                       position.y + headerBoxAttribute.spaceBefore + 1f,
+                                       position.width,
+                                       EditorGUIUtility.singleLineHeight * 1.3f);
 
             Color textColor = new Color32(226, 226, 226, 255);
             Color textureColor = new Color32(88, 88, 88, 255);
@@ -39,7 +46,6 @@ namespace ATM.Decoration
                 alignment = TextAnchor.MiddleCenter
             };
 
-            HeaderBoxAttribute headerBoxAttribute = (HeaderBoxAttribute)attribute;
             EditorGUI.LabelField(headerRect, headerBoxAttribute.header, headerStyle);
         }
     }
